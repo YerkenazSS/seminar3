@@ -1,48 +1,28 @@
-from mylistiterator import MyListIterator
+from linked_list import MyList, ListNode
 
-class MyList:
-  def __init__( self ):
-      self.head = None
-      self.tail = None
-      self.size = 0
-
-  def __len__( self ):
-      return self.size
-
-  def isEmpty(self,target):
-      curNode = self.head
-      while (curNode is not None) and \
-            (curNode.data!=target):
-         curNode = curNode.next
-
-      return curNode is not None
-
-  def enqueue( self, item ):
-      assert item != None
-      item.next = self.head
-      self.head = item
-      self.size += 1 
-     
-  def dequeue( self, target ):
-      predNode = None
-      curNode = self.head
-      while (curNode is not None) and \
-            (curNode.data != target) :
-         predNode = curNode
-	curNode = curNode.next
-
-      if curNode is not None :
-         self.size -= 1 
-         if curNode is self.head :
-            self.head = curNode.next
-         else :
-            predNode.next = curNode.next
-  
-  def __iter__( self ):
-      return MyListIterator(self.head)
-
-
-class ListNode:
-  def __init__(self, data=None):
-      self.data = data 
-      self.next = None
+class Queue:
+	def __init__(self):
+		self.my_queue = MyList()
+		
+	def length(self):
+		return self.my_queue.__len__()
+		
+	def isEmpty(self):
+		if self.length() == 0:
+			return True
+		return False
+		
+	def dequeue(self):
+if not self.isEmpty():
+			count = 0
+			for elem in self.my_queue:
+				count += 1
+				if count == self.length():
+					data = elem				
+			self.my_queue.remove(data)	
+			return data				
+		print("The stack contains no items!")
+		return ""	
+	def enqueue(self, item):
+		elem =  ListNode(item)
+self.my_queue.add(elem)
